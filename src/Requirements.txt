@@ -1,0 +1,5 @@
+// Auth Page //
+
+1) Centered Div with login functionality 
+2) Only login through google? Maybe facebook 
+
