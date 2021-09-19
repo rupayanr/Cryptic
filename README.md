@@ -1,4 +1,4 @@
-# Crytpic
+# Cryptic
 
 An encrypted chat messeneger with one to one asynchronous chat channels as well as ability to make chat rooms.
 
