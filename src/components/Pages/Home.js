@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import {
     Container,
     ChatWindowBG,
@@ -37,6 +37,7 @@ import Chats from './Chats'
 import Favourites from './Favourites'
 import Deleted from './Deleted'
 import SettingsPage from './Settings'
+import { AuthContext } from '../Provider/AuthProvider';
 
 
 function Alert(props) {
@@ -46,7 +47,9 @@ function Alert(props) {
 
 export default function Home() {
 
-    const [newConvo, setNewConvo] = useState(false)
+    const { logout } = useContext(AuthContext)
+
+    const [newConvo, setNewConvo] = useState(true)
     const [chats, setChats] = useState(false)
     const [contacts, setContacts] = useState(false)
     const [fav, setFav] = useState(false)
@@ -152,7 +155,8 @@ export default function Home() {
         },
         {
             icon: <LogOut size={18} />,
-            option: 'Logout'
+            option: 'Logout',
+
         }
     ]
 
@@ -165,14 +169,15 @@ export default function Home() {
 
     const handleStates = (type) => {
         states.forEach((object) => {
+
+            const { set } = object;
             if (object.type === type) {
-                console.log(object)
-                const { set } = object;
+
                 set(true)
 
             }
             else {
-                const { set } = object;
+
                 set(false)
             }
 
@@ -241,9 +246,12 @@ export default function Home() {
                     <OptionsBelow>
                         {optionBelow.map((item, index) => {
                             const { icon, option } = item;
+
                             return (
 
-                                <Button style={{ width: '70%', height: '30%', justifyContent: 'flex-start', textTransform: 'none' }}>
+                                <Button
+                                    onClick={logout}
+                                    style={{ width: '70%', height: '30%', justifyContent: 'flex-start', textTransform: 'none' }}>
                                     <IconButton disabled style={{ color: 'white' }}>
                                         {icon}
                                     </IconButton>

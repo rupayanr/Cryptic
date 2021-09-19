@@ -5,7 +5,6 @@ import {
     ChatBubble,
     TypeWriter,
     SendBtn,
-    LoginButton,
     BubbleContainer,
     TypingBubble,
     FadedText,
@@ -14,10 +13,16 @@ import {
     LogoText
 } from '../Styles/Styling'
 import Logo from '../../Assets/cryptic-logo.svg'
-
+import { useContext } from 'react'
 import { Button } from '@material-ui/core'
+import { AuthContext } from '../Provider/AuthProvider'
+
 
 export default function Login() {
+
+    const { login } = useContext(AuthContext)
+
+
     return (
         <LoginContainer>
             <ChatWindowSM>
@@ -59,7 +64,15 @@ export default function Login() {
                 <BubbleContainer>
 
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', height: '1rem', width: '20%', alignItems: 'center' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            height: '1rem',
+                            width: '20%',
+                            alignItems: 'center',
+                            marginBottom: '3rem'
+                        }}>
                         <TypingBubble />
                         <TypingBubble />
                         <TypingBubble />
@@ -70,11 +83,9 @@ export default function Login() {
                 </BubbleContainer>
 
 
-                <TypeWriter>
+                <TypeWriter sm={true}>
 
                     <AddBtn>
-
-
                     </AddBtn>
                     <Message>
                         <FadedText>
@@ -92,10 +103,19 @@ export default function Login() {
                 <img src={search} alt="" style={{ width: '1.5rem' }} />
                 Login using gmail
             </LoginButton> */}
-            <Button variant='outlined' style={{ borderColor: 'white', color: 'white', textTransform: 'none', width: '20rem' }}>
+            <Button
+
+                onClick={() => login()}
+                style={{
+                    borderColor: 'white',
+                    color: 'white',
+                    textTransform: 'none',
+                    width: '20rem',
+                    fontSize: '1rem'
+                }}>
 
                 <div style={{ margin: '5px 10px 0px 0px' }}>
-                    <img src={search} alt="" style={{ width: '1.2rem' }} />
+                    <img src={search} alt="" style={{ width: '1.5rem' }} />
                 </div>
                 Login using google
             </Button>

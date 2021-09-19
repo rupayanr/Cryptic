@@ -40,7 +40,7 @@ export const LoginContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 10px;
 
 `
 
@@ -243,10 +243,10 @@ export const Message = styled.div`
 
 export const TypeWriter = styled.div`
     position: absolute;
-    bottom: -1rem;
+    bottom: ${props => props.sm ? ('-0.5rem') : ('-1rem')};
     width: 95%;
     background-color: ${third};
-    height: 4rem;
+    height: ${props => props.sm ? ('3rem') : ('4rem')};
     border-radius: 5px;
     margin-bottom:1rem ;
     display: flex;
@@ -262,7 +262,7 @@ export const TypeContainer = styled.div`
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    overflow-y: auto;
+   
     
     &::-webkit-scrollbar{
         width: 1rem;

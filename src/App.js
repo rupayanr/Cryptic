@@ -1,13 +1,14 @@
-import Auth from './components/Pages/Auth'
-import Home from './components/Pages/Home'
-import { CrypticContainer } from './components/Styles/Styling';
+
+import AuthProvider from './components/Provider/AuthProvider';
+import Routes from './components/Routes/Routes';
+
 
 
 function App() {
   return (
-    <>
-      <Home />
-    </>
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   );
 }
 
